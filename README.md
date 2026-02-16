@@ -7,11 +7,11 @@ A part of my masters thesis on crevasse detection using deep learning. A HED-UNe
 - Outputs: segmentation probability maps and binary masks.
 
 ## Repository structure 
-- train.py -> training entrypoint
-- predict.py -> tiled inference on new GeoTIFF
-- config.yml -> training configuration
-- data_loading.py -> dataset setup and normalization
-- dataset_root/ -> expected dataset root (not committed)
+- train.py         -> training entrypoint
+- predict.py       -> tiled inference on new GeoTIFF
+- config.yml       -> training configuration
+- data_loading.py  -> dataset setup and normalization
+- dataset_root/    -> expected dataset root (not committed)
 
 ## Data 
 Expected layout (GeoTIFFs, matched by filename):
@@ -55,19 +55,19 @@ Useful flags:
 
 ## Configuration 
 Key knobs in config.yml:
-- model / model_args.* -> selects the architecture and its capacity.
-  - input_channels -> should match your imagery bands (this code uses the first 3).
-  - output_channels -> is 2 (seg + edge).
-  - base_channels, stack_height, merging, and deep_supervision -> control network depth and skip-connection behavior.
-- feature_pyramid -> enables multi-scale feature fusion before the output heads.
+- model / model_args.*                                           -> selects the architecture and its capacity.
+  - input_channels                                               -> should match your imagery bands (this code uses the first 3).
+  - output_channels                                              -> is 2 (seg + edge).
+  - base_channels, stack_height, merging, and deep_supervision   -> control network depth and skip-connection behavior.
+- feature_pyramid                                                -> enables multi-scale feature fusion before the output heads.
 - loss_args / loss_weights
-  - loss_args.type -> chooses the loss (e.g. FocalLoss).
-  - loss_weights.seg and .edge -> weight segmentation vs. edge supervision.
-- batch_size, learning_rate, epochs -> core training hyperparameters.
-- early_stopping, patience, early_stopping_tolerance -> controls early stopping if validation improvment stalls.
-- augmentation -> brightness jitter for RGB normalization. Use brightnedd or brightness_range to expand/limit intensity variation.
-- balances_sampling, balanced_sampling_* -> If enabled, tiles are sampled with weigths based on positive-pixel fraction to reduce class imbalance.
-  - power -> sets how aggressively rare positived are upweighted.
-  - max_weight -> caps weights.
-- data_threads, split_seed, run_test -> data loader workers, train/val split seed, and whether to run the test pass after training.
-- visualization_tiles -> tile indices used for consistent qualitative snapshots during training. 
+  - loss_args.type                                               -> chooses the loss (e.g. FocalLoss).
+  - loss_weights.seg and .edge                                   -> weight segmentation vs. edge supervision.
+- batch_size, learning_rate, epochs                              -> core training hyperparameters.
+- early_stopping, patience, early_stopping_tolerance             -> controls early stopping if validation improvment stalls.
+- augmentation                                                   -> brightness jitter for RGB normalization. Use brightnedd or brightness_range to expand/limit intensity variation.
+- balances_sampling, balanced_sampling_*                         -> If enabled, tiles are sampled with weigths based on positive-pixel fraction to reduce class imbalance.
+  - power                                                        -> sets how aggressively rare positived are upweighted.
+  - max_weight                                                   -> caps weights.
+- data_threads, split_seed, run_test                             -> data loader workers, train/val split seed, and whether to run the test pass after training.
+- visualization_tiles                                            -> tile indices used for consistent qualitative snapshots during training. 

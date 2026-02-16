@@ -1,0 +1,37 @@
+# Model Specification
+model: HEDUNet
+model_args:
+  input_channels: 3
+  output_channels: 2 # 1=crevasse segmentation, 1=edge map
+  base_channels: 16
+  stack_height: 5
+  squeeze_excitation: false
+  merging: attention
+  batch_norm: true
+  deep_supervision: true
+# Training Parameters
+feature_pyramid: true
+loss_args:
+  type: FocalLoss
+  #pos_weight: 30
+loss_weights:
+  seg: 1.0
+  edge: 0.2
+batch_size: 16
+epochs: 100
+learning_rate: 0.001
+early_stopping: false
+patience: 5
+early_stopping_tolerance: 0.05
+# Data Configuration
+data_threads: 4
+split_seed: 42
+run_test: true
+augmentation:
+  brightness: 0.1
+balanced_sampling: true
+balanced_sampling_power: 0.3
+balanced_sampling_eps: 0.0001
+balanced_sampling_max_weight: 10.0
+# Visualization
+visualization_tiles: [3, 4, 7, 8, 13, 16, 17, 26, 29, 37, 38, 40, 43, 45, 47]

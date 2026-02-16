@@ -76,3 +76,11 @@ Key knobs in config.yml:
   - max_weight                                                   -> caps weights.
 - data_threads, split_seed, run_test                             -> data loader workers, train/val split seed, and whether to run the test pass after training.
 - visualization_tiles                                            -> tile indices used for consistent qualitative snapshots during training. 
+
+
+## Thesis-only scripts 
+### resample_ortho.py 
+Generates lower-resolution versions of the orthophoto GeoTIFFs to visually assess how a trained model performs on coarser input. 
+
+### sensitivity_test.py 
+Evaluates how performance of a trained model changes under controlled image distortions (noise, blur, brightness, contrast, reoslution). It loads a trained run from logs/<run>/ , applies distortions to the test split, and writes a CSV with metrics. Optional plots show metric trends. 

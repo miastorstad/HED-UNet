@@ -1,6 +1,9 @@
 # HED-UNet for crevasse detection
 A part of my masters thesis on crevasse detection using deep learning. A HED-UNet model and training pipeline for crevasse detection using orthophotos. This repo includes training, evaluation, and tiled inference for GeoTIFF imagery. 
 
+
+Original code from https://github.com/khdlr/HED-UNet
+
 ## Overview 
 - Architecture: HED-UNet with deep supervision and edge head.
 - Task: binary crevasse segmentation + edge map prediction

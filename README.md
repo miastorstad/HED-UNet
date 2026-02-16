@@ -45,7 +45,7 @@ Outputs go to logs/<timestamp>/ :
 - checkpoints/
 - metrics.txt
 - tensorboard/
-- figures/ (qualitatice previews)
+- figures/ (qualitative previews)
 
 ## Inference 
 python predict.py --run-dir logs/<run>

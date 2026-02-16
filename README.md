@@ -20,9 +20,11 @@ Original code from https://github.com/khdlr/HED-UNet
 Expected layout (GeoTIFFs, matched by filename):
 
 dataset_root/
+
 images/
 tile_0001.tif
 tile_0002.tif
+
 gt/ 
 tile_0001.tif
 tile_0002.tif
